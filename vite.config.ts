@@ -37,4 +37,5 @@ function csvToJSONPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [csvToJSONPlugin(), react()],
+	base: "/that-card/",
 });
