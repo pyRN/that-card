@@ -8,6 +8,7 @@ import CardModal from "./CardModal";
 function App() {
 	const [selectedId, setSelectedId] = useState<SelectedId>("");
 	const tableRef = useRef<AgGridReact<IRowData>>(null);
+	return <h2>Hello Again, is this still working?</h2>;
 	return (
 		<>
 			<div
