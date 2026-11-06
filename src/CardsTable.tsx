@@ -42,10 +42,12 @@ const CardsTable = ({
 					{
 						field: "normalamt",
 						headerName: "Regular",
+						maxWidth: 70,
 					},
 					{
 						field: "foilamt",
 						headerName: "Foil",
+						maxWidth: 50,
 					},
 				]}
 				theme={themeBalham.withPart(colorSchemeDarkWarm).withParams({
