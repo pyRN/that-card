@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction, RefObject } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export interface Card {
 	id: string;
