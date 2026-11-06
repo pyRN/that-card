@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction, RefObject } from "react";
 
 export interface Card {
 	id: string;
@@ -17,6 +17,15 @@ export interface Card {
 	rarity: string;
 	set_name: string;
 	type_line: string;
+}
+
+export interface IRowData {
+	id: string;
+	name: string;
+	set_name: string;
+	normalamt: number;
+	foilamt: number;
+	created_at: string;
 }
 
 export interface ImageUris {
@@ -48,4 +57,6 @@ export interface Prices {
 export interface ImageUris {
 	normal: string;
 }
-export type SetSelectedCard = Dispatch<SetStateAction<Card | null>>;
+export type SelectedId = string;
+
+export type SetSelectedId = Dispatch<SetStateAction<SelectedId>>;

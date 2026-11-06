@@ -1,12 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import CardsTable from "./CardsTable";
 import SearchInput from "./SearchInput";
 import { AgGridReact } from "ag-grid-react";
-import type { Card } from "./types";
+import type { IRowData, SelectedId } from "./types";
+import CardModal from "./CardModal";
 
 function App() {
-	const [selectedCard, setSelectedCard] = useState(null);
-	const tableRef = useRef<AgGridReact<Partial<Card>>>(null);
+	const [selectedId, setSelectedId] = useState<SelectedId>("");
+	const tableRef = useRef<AgGridReact<IRowData>>(null);
 	return (
 		<>
 			<div
@@ -43,11 +44,9 @@ function App() {
 						margin: "5px 10px",
 					}}
 				>
-					<CardsTable
-						setSelectedCard={setSelectedCard}
-						ref={tableRef}
-					/>
+					<CardsTable setSelectedId={setSelectedId} ref={tableRef} />
 				</div>
+				<CardModal selectedId={selectedId} />
 			</div>
 		</>
 	);
