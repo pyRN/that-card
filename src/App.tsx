@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import CardsTable from "./CardsTable";
 import SearchInput from "./SearchInput";
+import { AgGridReact } from "ag-grid-react";
+import type { Card } from "./types";
 
 function App() {
 	const [selectedCard, setSelectedCard] = useState(null);
-	const tableRef = useRef<HTMLInputElement>(null);
+	const tableRef = useRef<AgGridReact<Partial<Card>>>(null);
 	return (
 		<>
 			<div
@@ -24,7 +26,7 @@ function App() {
 					>
 						Do I Have That Card?
 					</h4>
-					<SearchInput />
+					<SearchInput ref={tableRef} />
 				</div>
 
 				<div

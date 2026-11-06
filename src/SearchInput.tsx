@@ -1,11 +1,21 @@
-import React from "react";
+import type { Card } from "./types";
+import { AgGridReact } from "ag-grid-react";
 
-const SearchInput = () => {
+const SearchInput = ({
+	ref,
+}: {
+	ref: React.RefObject<AgGridReact<Partial<Card>>[]>;
+}) => {
 	return (
 		<input
 			type="text"
 			placeholder="Search"
-			onChange={(e) => console.log(e.target.value)}
+			onChange={(e) => {
+				ref.current.api.setGridOption(
+					"quickFilterText",
+					e.target.value,
+				);
+			}}
 			id="search-input"
 		/>
 	);

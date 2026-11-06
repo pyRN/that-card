@@ -1,13 +1,20 @@
 import { AgGridReact } from "ag-grid-react";
-import { themeBalham, colorSchemeDarkWarm } from "ag-grid-community";
-import type { SetSelectedCard } from "./types";
+import {
+	themeBalham,
+	colorSchemeDarkWarm,
+	ModuleRegistry,
+	QuickFilterModule,
+} from "ag-grid-community";
+import type { SetSelectedCard, Card } from "./types";
+
+ModuleRegistry.registerModules([QuickFilterModule]);
 import MagicCollection from "./assets/MagicCollection.json";
 const CardsTable = ({
 	setSelectedCard,
 	ref,
 }: {
 	setSelectedCard: SetSelectedCard;
-	ref: React.RefObject<AgGridReact>;
+	ref: React.RefObject<AgGridReact<Partial<Card>>[]>;
 }) => {
 	return (
 		<div style={{ height: "calc(100%)", width: "100%" }} id="cards-table">
@@ -48,9 +55,6 @@ const CardsTable = ({
 					textColor: "slateblue",
 					headerTextColor: "slateblue",
 				})}
-				onFirstDataRendered={(params) => {
-					params.api.sizeColumnsToFit();
-				}}
 				onRowClicked={(params) => {
 					setSelectedCard(params.data);
 				}}
