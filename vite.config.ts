@@ -22,7 +22,7 @@ function csvToJSONPlugin() {
 			const jsonResult = csvToJson
 				.fieldDelimiter(",")
 				.supportQuotedField(true)
-				.formatValueByType()
+				.formatValueByType(true)
 				.getJsonFromCsv(csvFilePath);
 
 			fs.writeFileSync(
