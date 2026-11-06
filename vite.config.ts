@@ -10,12 +10,12 @@ function csvToJSONPlugin() {
 		name: "vite-plugin-csv-to-json",
 		buildStart() {
 			const csvFilePath = path.resolve(
-				__dirname,
-				"src/assets/MagicCollection.csv",
+				import.meta.dirname,
+				"./src/assets/MagicCollection.csv",
 			);
 			const jsonOutputPath = path.resolve(
-				__dirname,
-				"src/assets/MagicCollection.json",
+				import.meta.dirname,
+				"./src/assets/MagicCollection.json",
 			);
 
 			// Convert CSV to JSON
