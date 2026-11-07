@@ -18,15 +18,14 @@ function App() {
 					className="flex justify-between align-center wrap"
 					id="header"
 				>
-					<h4
+					<p
 						style={{
 							margin: "5px 10px",
-							fontFamily:
-								"'Lucida Console', 'Courier New', monospace",
+							fontSize: "7pt",
 						}}
 					>
 						Do I Have That Card?
-					</h4>
+					</p>
 					<SearchInput ref={tableRef} />
 				</div>
 

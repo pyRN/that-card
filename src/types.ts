@@ -19,6 +19,22 @@ export interface Card {
 	type_line: string;
 }
 
+export interface Titles {
+	commander: string;
+	paupercommander: string;
+	legacy: string;
+	modern: string;
+	pauper: string;
+	vintage: string;
+}
+
+export interface Legalities {
+	legal: string;
+	not_legal: string;
+	restricted: string;
+	banned: string;
+}
+
 export interface IRowData {
 	id: string;
 	name: string;

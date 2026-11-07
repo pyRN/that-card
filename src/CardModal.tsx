@@ -1,10 +1,26 @@
 import { useState, useEffect } from "react";
-import type { Card, SelectedId } from "./types";
+import type { Card, SelectedId, Titles, Legalities } from "./types";
 
 const CardModal = ({ selectedId }: { selectedId: SelectedId }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [side, setSide] = useState(true);
 	const [data, setData] = useState<Partial<Card>>({});
+
+	const titles: Partial<Titles> = {
+		commander: "EDH",
+		paupercommander: "PEDH",
+		legacy: "Legacy",
+		modern: "Modern",
+		pauper: "Pauper",
+		vintage: "Vintage",
+	};
+
+	const legalities: Partial<Legalities> = {
+		legal: "Legal",
+		not_legal: "Illegal",
+		restricted: "Restricted",
+		banned: "Banned",
+	};
 
 	useEffect(() => {
 		console.log(selectedId);
@@ -38,8 +54,14 @@ const CardModal = ({ selectedId }: { selectedId: SelectedId }) => {
 
 	return isOpen && Object.keys(data).length ? (
 		<div id="card-modal">
-			<div>
-				<h2>{data.name}</h2>
+			<div className="flex-column center ">
+				<h2
+					style={{
+						fontSize: "12pt",
+					}}
+				>
+					{data.name}
+				</h2>
 				<img
 					src={
 						data.layout === "transform" ||
@@ -61,18 +83,56 @@ const CardModal = ({ selectedId }: { selectedId: SelectedId }) => {
 						width: "250px",
 					}}
 				/>
+
+				<div className="flex-column center">
+					{data.layout === "transform" ||
+					data.layout === "modal_dfc" ||
+					data.layout === "reversible_card" ||
+					data.layout === "double_faced_token" ? (
+						<button
+							className="btn"
+							onClick={() => setSide((prev) => !prev)}
+						>
+							Flip
+						</button>
+					) : null}
+					<div className="flex center m-5 wrap">
+						<p className="card-text">{`Rarity: ${data.rarity}`}</p>
+						<p className="card-text">{`Set: ${data.set_name}`}</p>
+					</div>
+
+					<p className="card-text m-10">
+						{`Prices: $${data.prices?.usd || 0} / $${data.prices?.usd_foil || 0} (Foil) / $${data.prices?.usd_etched || 0} (Etched)`}
+					</p>
+					<div className="flex-column center m-5">
+						<p className="card-text">{`Legality:`}</p>
+						<div className="flex centetwrap">
+							<div className="flex-column m-5">
+								<p className="card-text">
+									{`${titles["commander" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["commander" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+								<p className="card-text">
+									{`${titles["legacy" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["legacy" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+								<p className="card-text">
+									{`${titles["modern" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["modern" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+							</div>
+							<div className="flex-column m-5">
+								<p className="card-text">
+									{`${titles["pauper" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["pauper" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+								<p className="card-text">
+									{`${titles["paupercommander" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["paupercommander" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+								<p className="card-text">
+									{`${titles["vintage" as keyof Titles]}: ${data.legalities !== undefined ? legalities[data.legalities["vintage" as keyof typeof data.legalities] as keyof Legalities] : ""}`}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			{data.layout === "transform" ||
-			data.layout === "modal_dfc" ||
-			data.layout === "reversible_card" ||
-			data.layout === "double_faced_token" ? (
-				<button
-					className="btn"
-					onClick={() => setSide((prev) => !prev)}
-				>
-					Flip
-				</button>
-			) : null}
 			<button onClick={() => setIsOpen(false)} className="btn">
 				Close
 			</button>

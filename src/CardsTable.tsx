@@ -20,20 +20,22 @@ const CardsTable = forwardRef<AgGridReact<IRowData>, CardsTableProps>(
 			{
 				field: "name",
 				headerName: "Card Name",
+				minWidth: 180,
 			},
 			{
 				field: "set_name",
 				headerName: "Set Name",
+				minWidth: 100,
 			},
 			{
 				field: "normalamt",
 				headerName: "Regular",
-				maxWidth: 70,
+				maxWidth: 90,
 			},
 			{
 				field: "foilamt",
 				headerName: "Foil",
-				maxWidth: 50,
+				maxWidth: 90,
 			},
 		];
 
@@ -57,9 +59,9 @@ const CardsTable = forwardRef<AgGridReact<IRowData>, CardsTableProps>(
 					theme={themeBalham
 						.withPart(colorSchemeDarkWarm)
 						.withParams({
-							fontFamily:
-								"Lucida Console, 'Courier New', monospace", // Default font for the whole grid
-							backgroundColor: "black",
+							fontFamily: `"Press Start 2P", system-ui`, // Default font for the whole grid
+							fontSize: "7pt",
+							backgroundColor: "#1a1a1a",
 							accentColor: "slateblue",
 							textColor: "slateblue",
 							headerTextColor: "slateblue",
