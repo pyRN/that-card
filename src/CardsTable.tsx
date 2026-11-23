@@ -41,7 +41,7 @@ const CardsTable = forwardRef<AgGridReact<IRowData>, CardsTableProps>(
 
 		return (
 			<div
-				style={{ height: "calc(100% - 45px)", width: "100%" }}
+				style={{ height: "calc(100%)", width: "100%" }}
 				id="cards-table"
 			>
 				<AgGridReact
