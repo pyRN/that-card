@@ -25,6 +25,5 @@ dist-ssr
 
 # Build files
 
-src/assets/MagicCollection.json
-assets/MagicCollection.json
-./src/assets/MagicCollection.json
+# src/assets/MagicCollection.json
+# assets/MagicCollection.json
