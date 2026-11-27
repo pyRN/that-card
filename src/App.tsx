@@ -11,7 +11,8 @@ function App() {
 	return (
 		<>
 			<div
-				className="flex-column w-100 h-100 flex-grow"
+				className="flex-column w-100  flex-grow"
+				style={{ height: "100vh !important" }}
 				id="app-container"
 			>
 				<div
@@ -39,7 +40,7 @@ function App() {
 					className="flex"
 					id="content-container"
 					style={{
-						height: "calc(100vh - 80px)",
+						height: "calc(100vh - 55px)",
 						margin: "5px 10px",
 					}}
 				>
